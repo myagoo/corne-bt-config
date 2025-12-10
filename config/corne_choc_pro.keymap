@@ -120,7 +120,7 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&to 3   &kp Q                     &kp W                 &kp E                  &kp R                         &kp T        &trans  &trans  &kp Y        &kp U                          &kp I                   &kp O                  &kp P                         &trans
+&mo 3   &kp Q                     &kp W                 &kp E                  &kp R                         &kp T        &trans  &trans  &kp Y        &kp U                          &kp I                   &kp O                  &kp P                         &trans
 &trans  &hmr_left A LEFT_CONTROL  &hmr_left S LEFT_ALT  &hmr_left D LEFT_META  &hmr_shift_left F LEFT_SHIFT  &kp G        &trans  &trans  &kp H        &hmr_shift_right J LEFT_SHIFT  &hmr_right K LEFT_META  &hmr_right L LEFT_ALT  &hmr_right SEMI LEFT_CONTROL  &trans
 &trans  &kp Z                     &kp X                 &kp C                  &kp V                         &kp B                        &kp N        &kp M                          &kp COMMA               &kp DOT                &kp FSLH                      &trans
                                                         &trans                 &lt 2 TAB                     &lt 1 SPACE                  &lt 2 ENTER  &kp BACKSPACE                  &trans
