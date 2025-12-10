@@ -123,7 +123,7 @@
 &mo 3   &kp FR_Q                     &kp FR_W                 &kp FR_E                  &kp FR_R                         &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U                          &kp FR_I                   &kp FR_O                  &kp FR_P                              &trans
 &trans  &hmr_left FR_A LEFT_CONTROL  &hmr_left FR_S LEFT_ALT  &hmr_left FR_D LEFT_META  &hmr_shift_left FR_F LEFT_SHIFT  &kp FR_G        &trans  &trans  &kp FR_H     &hmr_shift_right FR_J LEFT_SHIFT  &hmr_right FR_K LEFT_META  &hmr_right FR_L LEFT_ALT  &hmr_right FR_SEMICOLON LEFT_CONTROL  &trans
 &trans  &kp FR_Z                     &kp FR_X                 &kp FR_C                  &kp FR_V                         &kp FR_B                        &kp FR_N     &kp FR_M                          &kp COMMA                  &kp DOT                   &kp FSLH                              &trans
-                                                              &trans                    &lt 2 TAB                        &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE                     &trans
+                                                              &kp LEFT_SHIFT            &lt 2 TAB                        &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE                     &kp RIGHT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
