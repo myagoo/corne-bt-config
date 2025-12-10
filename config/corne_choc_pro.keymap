@@ -120,10 +120,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&mo 3   &kp FR_Q                     &kp FR_W                 &kp FR_E                  &kp FR_R                         &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U                          &kp FR_I                   &kp FR_O                  &kp FR_P                              &trans
-&trans  &hmr_left FR_A LEFT_CONTROL  &hmr_left FR_S LEFT_ALT  &hmr_left FR_D LEFT_META  &hmr_shift_left FR_F LEFT_SHIFT  &kp FR_G        &trans  &trans  &kp FR_H     &hmr_shift_right FR_J LEFT_SHIFT  &hmr_right FR_K LEFT_META  &hmr_right FR_L LEFT_ALT  &hmr_right FR_SEMICOLON LEFT_CONTROL  &trans
-&trans  &kp FR_Z                     &kp FR_X                 &kp FR_C                  &kp FR_V                         &kp FR_B                        &kp FR_N     &kp FR_M                          &kp COMMA                  &kp DOT                   &kp FSLH                              &trans
-                                                              &kp LEFT_SHIFT            &lt 2 TAB                        &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE                     &kp RIGHT_SHIFT
+&mo 3   &kp FR_A               &kp FR_Z           &kp FR_E            &kp FR_R             &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U             &kp FR_I            &kp FR_O           &kp FR_P               &trans
+&trans  &mt FR_Q LEFT_CONTROL  &mt FR_S LEFT_ALT  &mt FR_D LEFT_META  &mt FR_F LEFT_SHIFT  &kp FR_G        &trans  &trans  &kp FR_H     &mt FR_J LEFT_SHIFT  &mt FR_K LEFT_META  &mt FR_L LEFT_ALT  &mt FR_M LEFT_CONTROL  &trans
+&trans  &kp FR_W               &kp FR_X           &kp FR_C            &kp FR_V             &kp FR_B                        &kp FR_N     &kp FR_M             &kp FR_COMMA        &kp FR_SEMICOLON   &kp FR_COLON           &trans
+                                                  &kp LEFT_SHIFT      &lt 2 TAB            &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE        &kp RIGHT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -132,10 +132,10 @@
         nav_layer {
             display-name = "navigation";
             bindings = <
-&trans  &trans            &trans        &trans         &trans          &trans           &none  &kp C_BRIGHTNESS_INC  &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp C_VOL_UP  &trans
-&trans  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &kp LEFT_SHIFT  &kp PRINTSCREEN  &none  &kp C_BRIGHTNESS_DEC  &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT  &kp C_VOL_DN  &trans
-&trans  &trans            &trans        &kp CAPSLOCK   &trans          &trans                                        &trans      &trans         &trans       &trans     &kp C_MUTE    &trans
-                                        &trans         &trans          &kp SPACE                                     &kp ESCAPE  &kp DELETE     &trans
+&trans  &trans            &trans        &trans         &trans          &trans           &trans  &trans  &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp C_VOL_UP  &trans
+&trans  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &kp LEFT_SHIFT  &kp PRINTSCREEN  &trans  &trans  &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT  &kp C_VOL_DN  &trans
+&trans  &trans            &trans        &kp CAPSLOCK   &trans          &trans                           &trans      &trans         &trans       &trans     &kp C_MUTE    &trans
+                                        &trans         &trans          &kp SPACE                        &kp ESCAPE  &kp DELETE     &trans
             >;
         };
 
