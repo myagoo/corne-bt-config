@@ -122,7 +122,7 @@
             bindings = <
 &mo 3   &kp FR_A               &kp FR_Z           &kp FR_E                  &kp FR_R                         &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U             &kp FR_I            &kp FR_O           &kp FR_P               &trans
 &trans  &mt LEFT_CONTROL FR_Q  &mt LEFT_ALT FR_S  &hmr_left LEFT_META FR_D  &hmr_shift_left LEFT_SHIFT FR_F  &kp FR_G        &trans  &trans  &kp FR_H     &mt LEFT_SHIFT FR_J  &mt LEFT_META FR_K  &mt LEFT_ALT FR_L  &mt LEFT_CONTROL FR_M  &trans
-&trans  &kp FR_W               &kp FR_X           &kp FR_C                  &kp FR_V                         &kp FR_B                        &kp FR_N     &kp FR_COMMA         &kp FR_SEMICOLON    &kp FR_COLON       &kp FR_EXCLAMATION     &trans
+&trans  &kp FR_W               &kp FR_X           &kp FR_C                  &kp FR_V                         &kp FR_B                        &kp FR_N     &kp FR_COMMA         &kp FR_SEMICOLON    &kp FR_COLON       &kp FR_EXCL            &trans
                                                   &kp LEFT_SHIFT            &lt 2 TAB                        &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE        &kp RIGHT_SHIFT
             >;
 
