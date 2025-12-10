@@ -120,10 +120,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&mo 3   &kp FR_A               &kp FR_Z           &kp FR_E            &kp FR_R             &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U             &kp FR_I            &kp FR_O           &kp FR_P               &trans
-&trans  &mt FR_Q LEFT_CONTROL  &mt FR_S LEFT_ALT  &mt FR_D LEFT_META  &mt FR_F LEFT_SHIFT  &kp FR_G        &trans  &trans  &kp FR_H     &mt FR_J LEFT_SHIFT  &mt FR_K LEFT_META  &mt FR_L LEFT_ALT  &mt FR_M LEFT_CONTROL  &trans
-&trans  &kp FR_W               &kp FR_X           &kp FR_C            &kp FR_V             &kp FR_B                        &kp FR_N     &kp FR_M             &kp FR_COMMA        &kp FR_SEMICOLON   &kp FR_COLON           &trans
-                                                  &kp LEFT_SHIFT      &lt 2 TAB            &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE        &kp RIGHT_SHIFT
+&mo 3   &kp FR_A               &kp FR_Z           &kp FR_E                  &kp FR_R                         &kp FR_T        &trans  &trans  &kp FR_Y     &kp FR_U             &kp FR_I            &kp FR_O           &kp FR_P               &trans
+&trans  &mt LEFT_CONTROL FR_Q  &mt LEFT_ALT FR_S  &hmr_left LEFT_META FR_D  &hmr_shift_left LEFT_SHIFT FR_F  &kp FR_G        &trans  &trans  &kp FR_H     &mt LEFT_SHIFT FR_J  &mt LEFT_META FR_K  &mt LEFT_ALT FR_L  &mt LEFT_CONTROL FR_M  &trans
+&trans  &kp FR_W               &kp FR_X           &kp FR_C                  &kp FR_V                         &kp FR_B                        &kp FR_N     &kp FR_COMMA         &kp FR_SEMICOLON    &kp FR_COLON       &kp FR_EXCLAMATION     &trans
+                                                  &kp LEFT_SHIFT            &lt 2 TAB                        &lt 1 FR_SPACE                  &lt 2 ENTER  &kp BACKSPACE        &kp RIGHT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
