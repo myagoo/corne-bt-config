@@ -1,0 +1,17 @@
+/* Adjustments for Mac layout */
+
+/* [ - On Mac (French), [ is Alt + 5 */
+#undef FR_LEFT_BRACKET
+#define FR_LEFT_BRACKET (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_5_AND_PERCENT)))
+
+/* ] - On Mac (French), ] is Alt + 6 */
+#undef FR_RIGHT_BRACKET
+#define FR_RIGHT_BRACKET (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_6_AND_CARET)))
+
+/* { - On Mac (French), { is Alt + 8 */
+#undef FR_LEFT_BRACE
+#define FR_LEFT_BRACE (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_8_AND_ASTERISK)))
+
+/* } - On Mac (French), } is Alt + 9 */
+#undef FR_RIGHT_BRACE
+#define FR_RIGHT_BRACE (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_9_AND_LEFT_PARENTHESIS)))

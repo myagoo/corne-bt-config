@@ -5,6 +5,7 @@
  */
 
 #include "keys_fr.h" // or your language file
+#include "keys_fr_macos.h" // or your language file
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
