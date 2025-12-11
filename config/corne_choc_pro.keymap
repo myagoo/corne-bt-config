@@ -105,6 +105,16 @@
             key-positions = <35 36>;
             layers = <0>;
         };
+
+        DBL_QUOTES {
+            bindings = <&kp FR_DOUBLE_QUOTES>;
+            key-positions = <2 3>;
+        };
+
+        SGL_QUOTE {
+            bindings = <&kp FR_SINGLE_QUOTE>;
+            key-positions = <17 16>;
+        };
     };
 
     keymap {
