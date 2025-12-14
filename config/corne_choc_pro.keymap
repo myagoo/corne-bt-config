@@ -169,6 +169,34 @@
             layers = <0>;
             require-prior-idle-ms = <150>;
         };
+
+        slash {
+            bindings = <&kp FR_SLASH>;
+            key-positions = <4 18>;
+            layers = <0>;
+            require-prior-idle-ms = <150>;
+        };
+
+        backslash {
+            bindings = <&kp FR_BACKSLASH>;
+            key-positions = <9 23>;
+            layers = <0>;
+            require-prior-idle-ms = <150>;
+        };
+
+        less {
+            bindings = <&kp FR_LESS_THAN>;
+            key-positions = <18 32>;
+            layers = <0>;
+            require-prior-idle-ms = <150>;
+        };
+
+        greater {
+            bindings = <&kp FR_GREATER_THAN>;
+            key-positions = <23 35>;
+            layers = <0>;
+            require-prior-idle-ms = <150>;
+        };
     };
 
     keymap {
@@ -196,10 +224,10 @@
         nav_layer {
             display-name = "navigation";
             bindings = <
-&trans      &trans            &kp K_UNDO    &kp C_REPEAT   &kp K_REDO      &trans  &trans  &trans  &kp HOME  &kp PAGE_DOWN   &kp PAGE_UP       &kp END     &kp C_VOL_UP  &kp C_BRIGHTNESS_INC
-&caps_word  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &kp LEFT_SHIFT  &trans  &trans  &trans  &kp LEFT  &kp DOWN        &kp UP            &kp RIGHT   &kp C_VOL_DN  &kp C_BRIGHTNESS_DEC
-&trans      &trans            &kp K_CUT     &kp K_COPY     &kp K_PASTE     &trans                  &trans    &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT  &kp C_MUTE    &kp PRINTSCREEN
-                                            &trans         &trans          &trans                  &trans    &trans          &trans
+&trans      &trans            &kp K_UNDO    &kp C_REPEAT    &kp K_REDO      &trans  &trans  &trans  &kp HOME  &kp PAGE_DOWN   &kp PAGE_UP       &kp END     &kp C_VOL_UP  &kp C_BRIGHTNESS_INC
+&caps_word  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META   &kp LEFT_SHIFT  &trans  &trans  &trans  &kp LEFT  &kp DOWN        &kp UP            &kp RIGHT   &kp C_VOL_DN  &kp C_BRIGHTNESS_DEC
+&trans      &trans            &kp LC(FR_X)  &kp LC(INSERT)  &kp LS(INSERT)  &trans                  &trans    &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT  &kp C_MUTE    &kp PRINTSCREEN
+                                            &trans          &trans          &trans                  &trans    &trans          &trans
             >;
         };
 
