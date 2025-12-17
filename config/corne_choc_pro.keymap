@@ -276,8 +276,8 @@
 
             bindings = <
 &trans  &kp FR_AT        &kp FR_HASH       &kp FR_EURO       &kp FR_DOLLAR  &kp FR_AMPERSAND   &trans  &trans  &kp FR_PLUS   &kp FR_N7  &kp FR_N8  &kp FR_N9  &kp FR_N0        &trans
-&trans  &kp FR_ASTERISK  &kp FR_BACKSLASH  &kp FR_PIPE       &kp FR_SLASH   &kp FR_UNDERSCORE  &trans  &trans  &kp FR_EQUAL  &kp FR_N4  &kp FR_N5  &kp FR_N6  &kp FR_ASTERISK  &trans
-&trans  &kp FR_PERCENT   &kp FR_DEGREE     &kp FR_C_CEDILLA  &kp FR_TILDE   &kp FR_MINUS                       &kp FR_MINUS  &kp FR_N1  &kp FR_N2  &kp FR_N3  &kp FR_PERCENT   &trans
+&trans  &kp FR_ASTERISK  &kp FR_BACKSLASH  &kp FR_PIPE       &kp FR_SLASH   &kp FR_MINUS       &trans  &trans  &kp FR_MINUS  &kp FR_N4  &kp FR_N5  &kp FR_N6  &kp FR_ASTERISK  &trans
+&trans  &kp FR_PERCENT   &kp FR_DEGREE     &kp FR_C_CEDILLA  &kp FR_TILDE   &kp FR_UNDERSCORE                  &kp FR_EQUAL  &kp FR_N1  &kp FR_N2  &kp FR_N3  &kp FR_PERCENT   &trans
                                            &trans            &trans         &trans                             &trans        &trans     &trans
             >;
         };
