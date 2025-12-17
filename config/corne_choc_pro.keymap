@@ -292,10 +292,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-&trans  &BT BT_CLR BT_NXT  &trans  &trans      &trans       &RGB RGB_TOG RGB_EFF  &trans  &trans  &trans  &kp F7  &kp F8  &kp F9  &kp F12  &trans
-&trans  &trans             &trans  &trans      &trans       &trans                &trans  &trans  &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans
-&trans  &trans             &trans  &sys_reset  &bootloader  &studio_unlock                        &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
-                                   &trans      &trans       &trans                                &trans  &trans  &trans
+&trans  &trans  &trans  &trans      &trans       &trans          &trans  &trans  &trans  &kp F7  &kp F8  &kp F9  &kp F12  &trans
+&trans  &trans  &trans  &trans      &trans       &trans          &trans  &trans  &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans
+&trans  &trans  &trans  &sys_reset  &bootloader  &studio_unlock                  &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                        &trans      &trans       &trans                          &trans  &trans  &trans
             >;
         };
     };
