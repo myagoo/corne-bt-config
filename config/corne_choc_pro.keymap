@@ -88,6 +88,33 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
+
+        accents: accents {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ACCENTS";
+            #binding-cells = <0>;
+            bindings = <&kp FR_GRAVE>, <&kp FR_CARET>, <&kp FR_UMLAUT>, <&none>;
+
+            tapping-term-ms = <200>;
+        };
+
+        BT: BT {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BT";
+            bindings = <&bt>, <&bt>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <3000>;
+        };
+
+        RGB: RGB {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGB";
+            bindings = <&rgb_ug>, <&rgb_ug>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <3000>;
+        };
     };
 
     combos {
@@ -135,14 +162,14 @@
             require-prior-idle-ms = <150>;
         };
 
-        DBL_QUOTES {
+        double_quotes {
             bindings = <&kp FR_DOUBLE_QUOTES>;
             key-positions = <9 10>;
             layers = <0>;
             require-prior-idle-ms = <150>;
         };
 
-        SGL_QUOTE {
+        single_quote {
             bindings = <&kp FR_SINGLE_QUOTE>;
             key-positions = <23 24>;
             layers = <0>;
@@ -150,20 +177,20 @@
         };
 
         BACKTICK {
-            bindings = <&kp RA(FR_E_GRAVE)>;
+            bindings = <&kp FR_GRAVE>;
             key-positions = <35 36>;
             require-prior-idle-ms = <150>;
             layers = <0>;
         };
 
-        EACUTE {
+        eacute {
             bindings = <&kp FR_E_ACUTE>;
             key-positions = <3 4>;
             layers = <0>;
             require-prior-idle-ms = <150>;
         };
 
-        EGRAVE {
+        egrave {
             bindings = <&kp FR_E_GRAVE>;
             key-positions = <3 2>;
             layers = <0>;
@@ -197,6 +224,13 @@
             layers = <0>;
             require-prior-idle-ms = <150>;
         };
+
+        agrave {
+            bindings = <&kp FR_A_GRAVE>;
+            key-positions = <1 0>;
+            require-prior-idle-ms = <150>;
+            layers = <0>;
+        };
     };
 
     keymap {
@@ -212,10 +246,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&mo 3   &kp FR_A                     &kp FR_Z                 &kp FR_E                  &kp FR_R                   &kp FR_T   &trans  &trans  &kp FR_Y     &kp FR_U                    &kp FR_I                   &kp FR_O                  &kp FR_P                      &trans
-&trans  &hrm_left LEFT_CONTROL FR_Q  &hrm_left LEFT_ALT FR_S  &hrm_left LEFT_META FR_D  &hrm_left LEFT_SHIFT FR_F  &kp FR_G   &trans  &trans  &kp FR_H     &hrm_right LEFT_SHIFT FR_J  &hrm_right LEFT_META FR_K  &hrm_right LEFT_ALT FR_L  &hrm_right LEFT_CONTROL FR_M  &trans
-&trans  &kp FR_W                     &kp FR_X                 &kp FR_C                  &kp FR_V                   &kp FR_B                   &kp FR_N     &coma                       &dot                       &mark                     &quote                        &trans
-                                                              &kp ESCAPE                &lt 2 FR_SPACE             &lt 1 TAB                  &lt 1 ENTER  &lt 2 BACKSPACE             &kp DELETE
+&trans      &kp FR_A                     &kp FR_Z                 &kp FR_E                  &kp FR_R                   &kp FR_T   &trans  &trans  &kp FR_Y     &kp FR_U                    &kp FR_I                   &kp FR_O                  &kp FR_P                      &trans
+&caps_word  &hrm_left LEFT_CONTROL FR_Q  &hrm_left LEFT_ALT FR_S  &hrm_left LEFT_META FR_D  &hrm_left LEFT_SHIFT FR_F  &kp FR_G   &trans  &trans  &kp FR_H     &hrm_right LEFT_SHIFT FR_J  &hrm_right LEFT_META FR_K  &hrm_right LEFT_ALT FR_L  &hrm_right LEFT_CONTROL FR_M  &trans
+&mo 3       &kp FR_W                     &kp FR_X                 &kp FR_C                  &kp FR_V                   &kp FR_B                   &kp FR_N     &coma                       &dot                       &mark                     &accents                      &trans
+                                                                  &kp ESCAPE                &lt 2 FR_SPACE             &lt 1 TAB                  &lt 1 ENTER  &lt 2 BACKSPACE             &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -224,10 +258,10 @@
         nav_layer {
             display-name = "navigation";
             bindings = <
-&trans      &trans            &kp K_UNDO    &kp C_REPEAT    &kp K_REDO      &trans  &trans  &trans  &kp HOME  &kp PAGE_DOWN   &kp PAGE_UP       &kp END     &kp C_VOL_UP  &kp C_BRIGHTNESS_INC
-&caps_word  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META   &kp LEFT_SHIFT  &trans  &trans  &trans  &kp LEFT  &kp DOWN        &kp UP            &kp RIGHT   &kp C_VOL_DN  &kp C_BRIGHTNESS_DEC
-&trans      &trans            &kp LC(FR_X)  &kp LC(INSERT)  &kp LS(INSERT)  &trans                  &trans    &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT  &kp C_MUTE    &kp PRINTSCREEN
-                                            &trans          &trans          &trans                  &trans    &trans          &trans
+&trans  &trans            &kp K_UNDO    &kp C_REPEAT   &kp K_REDO      &trans  &trans  &trans  &kp HOME    &kp PAGE_DOWN   &kp PAGE_UP       &kp END     &kp C_VOL_UP  &kp C_BRIGHTNESS_INC
+&trans  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &kp LEFT_SHIFT  &trans  &trans  &trans  &kp LEFT    &kp DOWN        &kp UP            &kp RIGHT   &kp C_VOL_DN  &kp C_BRIGHTNESS_DEC
+&trans  &trans            &trans        &trans         &trans          &trans                  &kp INSERT  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT  &kp C_MUTE    &kp PRINTSCREEN
+                                        &trans         &trans          &trans                  &trans      &trans          &trans
             >;
         };
 
@@ -243,7 +277,7 @@
             bindings = <
 &trans  &kp FR_AT     &kp FR_HASH       &kp FR_EURO       &kp FR_DOLLAR      &kp FR_AMPERSAND  &trans  &trans  &kp FR_PLUS   &kp FR_N7  &kp FR_N8  &kp FR_N9  &kp FR_N0        &trans
 &trans  &kp FR_TILDE  &kp FR_BACKSLASH  &kp FR_PIPE       &kp FR_SLASH       &kp FR_CARET      &trans  &trans  &kp FR_EQUAL  &kp FR_N4  &kp FR_N5  &kp FR_N6  &kp FR_ASTERISK  &trans
-&trans  &trans        &kp FR_U_GRAVE    &kp FR_C_CEDILLA  &kp FR_UNDERSCORE  &kp LS(FR_CARET)                  &kp FR_MINUS  &kp FR_N1  &kp FR_N2  &kp FR_N3  &kp FR_PERCENT   &trans
+&trans  &trans        &kp FR_U_GRAVE    &kp FR_C_CEDILLA  &kp FR_UNDERSCORE  &kp FR_UMLAUT                     &kp FR_MINUS  &kp FR_N1  &kp FR_N2  &kp FR_N3  &kp FR_PERCENT   &trans
                                         &trans            &trans             &trans                            &trans        &trans     &trans
             >;
         };
@@ -258,10 +292,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-&trans  &bt BT_NXT  &bt BT_CLR  &trans      &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans      &trans      &trans           &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans      &sys_reset  &bootloader      &studio_unlock                   &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans      &trans           &trans                           &trans  &trans  &trans
+&trans  &BT BT_CLR BT_NXT  &trans  &trans      &trans       &RGB RGB_TOG RGB_EFF  &trans  &trans  &trans  &kp F7  &kp F8  &kp F9  &kp F12  &trans
+&trans  &trans             &trans  &trans      &trans       &trans                &trans  &trans  &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans
+&trans  &trans             &trans  &sys_reset  &bootloader  &studio_unlock                        &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                                   &trans      &trans       &trans                                &trans  &trans  &trans
             >;
         };
     };
