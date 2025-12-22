@@ -281,15 +281,15 @@
         nav_layer {
             display-name = "navigation";
             bindings = <
-&trans  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp C_MUTE        &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans  &kp HOME     &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &trans  &trans
-&trans  &trans                &trans                &trans            &trans             &trans           &trans  &trans  &kp LEFT     &kp DOWN       &kp UP       &kp RIGHT  &trans  &trans
-&trans  &trans                &kp C_PREV            &kp C_PLAY_PAUSE  &kp C_NEXT         &key_repeat                      &key_repeat  &kp INSERT     &trans       &trans     &trans  &trans
-                                                    &trans            &trans             &trans                           &trans       &trans         &trans
+&trans  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp C_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans  &trans  &kp HOME     &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &trans  &trans
+&trans  &trans                &trans                &trans      &trans             &trans           &trans  &trans  &kp LEFT     &kp DOWN       &kp UP       &kp RIGHT  &trans  &trans
+&trans  &kp C_PREVIOUS        &kp C_PLAY_PAUSE      &kp C_NEXT  &kp INSERT         &key_repeat                      &key_repeat  &kp INSERT     &trans       &trans     &trans  &trans
+                                                    &trans      &trans             &trans                           &trans       &trans         &trans
             >;
         };
 
-        raise_layer {
-            display-name = "SYMBOL";
+        numbol_layer {
+            display-name = "numbers and symbols";
 
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  | LCTRL | RCTRL |  ^  |  &  |  *  |  (  |  )  | BSPC |
