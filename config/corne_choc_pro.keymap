@@ -256,6 +256,15 @@
         };
     };
 
+    macros {
+        double_shift: double_shift {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT_SHIFT &kp RIGHT_SHIFT>;
+            label = "DOUBLE_SHIFT";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -271,7 +280,7 @@
             bindings = <
 &trans      &kp FR_A                     &kp FR_Z                 &kp FR_E                  &kp FR_R                   &kp FR_T                              &trans  &trans  &kp FR_Y                               &kp FR_U                    &kp FR_I                   &kp FR_O                  &kp FR_P                      &trans
 &caps_word  &hrm_left LEFT_CONTROL FR_Q  &hrm_left LEFT_ALT FR_S  &hrm_left LEFT_META FR_D  &hrm_left LEFT_SHIFT FR_F  &hrm_left LS(LA(LC(LEFT_META))) FR_G  &trans  &trans  &hrm_right LS(LA(LC(LEFT_META))) FR_H  &hrm_right LEFT_SHIFT FR_J  &hrm_right LEFT_META FR_K  &hrm_right LEFT_ALT FR_L  &hrm_right LEFT_CONTROL FR_M  &trans
-&mo 3       &kp FR_W                     &kp FR_X                 &kp FR_C                  &kp FR_V                   &kp FR_B                                              &kp FR_N                               &coma                       &dot                       &mark                     &accents                      &trans
+&mo 3       &kp FR_W                     &kp FR_X                 &kp FR_C                  &kp FR_V                   &kp FR_B                                              &kp FR_N                               &coma                       &dot                       &mark                     &accents                      &double_shift
                                                                   &kp ESCAPE                &lt 2 FR_SPACE             &lt 1 TAB                                             &lt 1 ENTER                            &lt 2 BACKSPACE             &kp DELETE
             >;
 
