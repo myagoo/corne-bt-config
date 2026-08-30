@@ -285,7 +285,6 @@
 &mo 3       &kp FR_W                     &kp FR_X                 &kp FR_C                  &kp FR_V                   &kp FR_B                                              &kp FR_N                               &coma                       &dot                       &mark                     &accents                      &double_shift
                                                                   &kp ESCAPE                &lt 2 FR_SPACE             &lt 1 TAB                                             &lt 1 ENTER                            &lt 2 BACKSPACE             &kp DELETE
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
