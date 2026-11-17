@@ -1,3 +1,13 @@
+if(CONFIG_ZMK_KEYBEACON)
+  # KeyBeacon 1.2.0's probe detects this API, but its CMake list parser loses
+  # the emitted define after the status banner's unmatched '[' character.
+  # Use Zephyr's interface definitions so the dependency receives the flag.
+  file(READ "${CMAKE_SOURCE_DIR}/include/zmk/endpoints.h" corne_endpoints_header)
+  if(corne_endpoints_header MATCHES "zmk_endpoints_selected\\(void\\)")
+    zephyr_compile_definitions(ZMK_KEYBEACON_HAS_LEGACY_ENDPOINT=1)
+  endif()
+endif()
+
 if(CONFIG_ZMK_PHYSICAL_KEYS)
   if(CONFIG_LTO)
     message(FATAL_ERROR "ZMK_PHYSICAL_KEYS requires LTO disabled for linker wrapping")

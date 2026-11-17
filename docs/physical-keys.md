@@ -22,6 +22,14 @@ Captured-event replays (`ZMK_EVENT_RAISE_AT` / `ZMK_EVENT_RELEASE`) bypass the h
 they must not create artificial presses. LTO is rejected by CMake because it
 can bypass linker wrapping. Recheck these call paths when upgrading ZMK.
 
+KeyBeacon v1.2.0 has a CMake probe-output parsing issue: the compatibility check
+finds the legacy endpoint API, but its compile definition is lost. The root
+`CMakeLists.txt` checks `zmk/endpoints.h` and supplies
+`ZMK_KEYBEACON_HAS_LEGACY_ENDPOINT=1` through Zephyr's interface definitions when
+the legacy declaration exists. This selects KeyBeacon's existing compatibility
+branch without changing its source or upgrading ZMK. Revisit this workaround
+when upgrading KeyBeacon.
+
 ZMK's transformed `position` is the zero-based index of a binding in each layer,
 not a HID usage or an untransformed row/column. The normal Corne transform has
 46 positions; the layout JSON uses the same order. ZMK central forwards events
