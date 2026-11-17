@@ -10,7 +10,7 @@ include:
   - board: corne_choc_pro_left
     snippet: studio-rpc-usb-uart
     shield: sharp_mip
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_KEYBEACON=y -DCONFIG_ZMK_PHYSICAL_KEYS=y
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_KEYBEACON=y -DCONFIG_ZMK_PHYSICAL_KEYS=y -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y
     artifact-name: corne_choc_pro_bt_left
   - board: corne_choc_pro_right
     shield: sharp_mip

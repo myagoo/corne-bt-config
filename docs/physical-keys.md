@@ -13,6 +13,17 @@ Actions workflow adds this repository through `ZMK_EXTRA_MODULES`, which loads
 already sends physical positions to the central; it needs no protocol change.
 5-column and settings-reset builds leave the feature disabled.
 
+The normal left build also enables
+`CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y`. The right firmware already
+enables battery reporting and the standard Bluetooth Battery Service, but ZMK
+does not fetch peripheral battery levels on the central by default. This option
+makes the central read and subscribe to the right battery, raising the events
+that KeyBeacon uses for its right-side percentage and connectivity flag. Without
+it, KeyBeacon reports `255` (unavailable) for the right battery even when keys work.
+The separate battery proxy service is not needed: KeyBeacon publishes the value.
+Enabling fetching requires reflashing the left half only; the existing right
+firmware already provides the necessary service.
+
 The implementation targets ZMK v0.3. It uses GNU ld
 `--wrap=raise_zmk_position_state_changed` to observe initial physical events
 **before** combo and hold-tap listeners can capture or consume them. The wrapper
