@@ -1,0 +1,7 @@
+config ZMK_PHYSICAL_KEYS
+    bool "Expose physical key positions over Bluetooth"
+    depends on ZMK_BLE && ZMK_SPLIT_ROLE_CENTRAL
+    help
+      Read/notify the physical key bitmap, before combos and hold-taps.
+      Optional companion service for the Omarchy Corne typing aid.
+      Requires an encrypted Bluetooth connection; disabled by default.
