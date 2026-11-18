@@ -1,3 +1,5 @@
+> Personal configuration: [42-key Corne, KeyBeacon and Corny setup](docs/corne-42.md).
+
 # Keebart ZMK Firmware
 
 This repository contains the ZMK firmware configuration for Keebart wireless
