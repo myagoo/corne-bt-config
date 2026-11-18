@@ -19,38 +19,38 @@ def block(text, name):
     raise ValueError(f'Unclosed block: {name}')
 
 
-class Corne42Tests(unittest.TestCase):
+class CorneLayoutTests(unittest.TestCase):
     def setUp(self):
         self.keymap = (CONFIG / 'corne_choc_pro.keymap').read_text()
-        self.overlay = (CONFIG / 'corne_choc_pro_42.dtsi').read_text()
+        self.board = (ROOT / "boards/arm/corne_choc_pro/corne_choc_pro.dtsi").read_text()
+        self.geometry = (ROOT / "boards/arm/corne_choc_pro/corne_choc_pro-layouts.dtsi").read_text()
         self.points = json.loads((CONFIG / 'corne_choc_pro.json').read_text())['layouts']['default_layout']['layout']
 
     def test_matrix_and_physical_layout_match_json_on_both_halves(self):
-        expected = [(row, col) for row in range(3) for col in (*range(6), *range(8, 14))]
+        expected = [(row, col) for row in range(2) for col in range(14)]
+        expected += [(2, col) for col in (*range(6), *range(8, 14))]
         expected += [(3, col) for col in (3, 4, 5, 8, 9, 10)]
-        matrix = [tuple(map(int, p)) for p in re.findall(r'RC\((\d+),(\d+)\)', self.overlay)]
+        matrix = [tuple(map(int, p)) for p in re.findall(r'RC\((\d+),(\d+)\)', block(self.board, 'keymap_transform_0'))]
         self.assertEqual(matrix, expected)
         self.assertEqual([(p['row'], p['col']) for p in self.points], expected)
-        attrs = re.findall(r'<&key_physical_attrs ([^>]+)>', self.overlay)
-        self.assertEqual(len(attrs), 42)
+        attrs = re.findall(r'<&key_physical_attrs ([^>]+)>', block(self.geometry, 'default_layout'))
+        self.assertEqual(len(attrs), 46)
         for point, values in zip(self.points, attrs):
             actual = [int(n) / 100 for n in re.findall(r'-?\d+', values)]
             self.assertEqual(actual, [point.get('w', 1), point.get('h', 1), point['x'], point['y'],
                                      point.get('r', 0), point.get('rx', 0), point.get('ry', 0)])
         right = (ROOT / 'boards/arm/corne_choc_pro/corne_choc_pro_right.dts').read_text()
         self.assertIn('col-offset = <7>', block(right, 'default_transform'))
-        self.assertNotIn('col-offset', block(self.overlay, 'default_transform'))
 
-    def test_all_layers_and_studio_use_42_positions(self):
+    def test_absent_switches_are_none_without_renumbering_other_keys(self):
         for name in ('default_layer', 'nav_layer', 'numbol_layer', 'settings_layer'):
             bindings = re.search(r'\bbindings\s*=\s*<([^>]+)>', block(self.keymap, name))[1]
-            self.assertEqual(bindings.count('&'), 42, name)
-        positions = re.search(r'positions\s*=\s*<([^>]+)>', self.overlay)[1]
-        self.assertEqual(list(map(int, positions.split())), list(range(42)))
-        self.assertIn('&five_col_layout { status = "disabled"; };', self.overlay)
-        self.assertIn('/delete-node/ &five_col_map;', self.overlay)
-        self.assertIn('#include "corne_choc_pro_42.dtsi"', self.keymap)
-        self.assertNotIn('corne_choc_pro_42.dtsi', (CONFIG / 'corne_choc_pro_5col.keymap').read_text())
+            entries = [entry.strip() for entry in re.findall(r'&[^&]+', bindings)]
+            self.assertEqual(len(entries), 46, name)
+            for index in (6, 7, 20, 21):
+                self.assertEqual(entries[index], '&none', (name, index))
+        self.assertNotIn('corne_choc_pro_42.dtsi', self.keymap)
+        self.assertIn('zmk,physical-layout = &default_layout', self.keymap)
 
     def test_combos_keep_their_physical_switches(self):
         expected = {
@@ -72,7 +72,7 @@ class Corne42Tests(unittest.TestCase):
         for name, opposite_is_right in [('hrm_left', True), ('hrm_left_repeat', True), ('hrm_right', False)]:
             indices = re.search(r'hold-trigger-key-positions\s*=\s*<([^>]+)>', block(self.keymap, name))[1]
             self.assertEqual(list(map(int, indices.split())),
-                             [i for i, p in enumerate(self.points) if (p['col'] >= 8) == opposite_is_right])
+                             [i for i, p in enumerate(self.points) if i not in (6, 7, 20, 21) and (p['col'] >= 8) == opposite_is_right])
 
 
 if __name__ == '__main__':

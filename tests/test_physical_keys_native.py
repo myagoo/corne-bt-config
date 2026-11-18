@@ -40,7 +40,7 @@ static inline void k_work_queue_start(struct k_work_q *q, char *s, size_t n, int
 #define SYS_INIT(fn, level, priority) int test_init(void) { return fn(); }
 struct zmk_position_state_changed { uint8_t source; uint32_t position; bool state; int64_t timestamp; };
 int raise_zmk_position_state_changed(struct zmk_position_state_changed);
-#define ZMK_KEYMAP_LEN 42
+#define ZMK_KEYMAP_LEN 46
 struct bt_conn { int unused; };
 struct bt_gatt_attr {
   ssize_t (*read)(struct bt_conn *, const struct bt_gatt_attr *, void *, uint16_t, uint16_t);
@@ -76,14 +76,14 @@ static struct zmk_position_state_changed expected;
 static int processed;
 static void read_state(uint8_t *value) {
   assert(physical_keys_svc.attrs[2].read(NULL, &physical_keys_svc.attrs[2], value, 8, 0) == 8);
-  assert(value[0] == 1 && value[1] == 42);
+  assert(value[0] == 1 && value[1] == 46);
 }
 /* Called by the original event raiser, emulating a consuming combo/hold-tap. */
 int test_consumer(struct zmk_position_state_changed event) {
   assert(event.position == expected.position && event.state == expected.state);
   assert(event.source == expected.source && event.timestamp == expected.timestamp);
   uint8_t value[8]; read_state(value);
-  if(event.position < 42) assert(!!(value[2+event.position/8] & (1u << (event.position%8))) == event.state);
+  if(event.position < 46) assert(!!(value[2+event.position/8] & (1u << (event.position%8))) == event.state);
   processed++;
   return 2; /* ZMK_EV_EVENT_CAPTURED must not prevent physical observation. */
 }
@@ -105,27 +105,27 @@ int main(void) {
   assert(!pending && notifications == 0);
   read_state(value); assert(value[2] == 1);
   subscribe(true); drain(); assert(received[0][2] == 1);
-  press(0, 41, true); press(255, 0, false); press(0, 41, false);
+  press(0, 45, true); press(255, 0, false); press(0, 45, false);
   assert(notifications == 1); /* No GATT operation on the key-processing path. */
   drain(); assert(notifications == 4);
-  assert(received[1][2] == 1 && received[1][7] == 2);
-  assert(received[2][2] == 0 && received[2][7] == 2);
+  assert(received[1][2] == 1 && received[1][7] == 32);
+  assert(received[2][2] == 0 && received[2][7] == 32);
   assert(received[3][2] == 0 && received[3][7] == 0);
-  press(0, 41, false); press(255, 999, true); drain(); assert(notifications == 4);
+  press(0, 45, false); press(255, 999, true); drain(); assert(notifications == 4);
   /* Short tap snapshots survive even before the worker gets CPU time. */
   press(255, 8, true); press(255, 8, false); drain();
   assert(received[4][3] == 1 && received[5][3] == 0);
   /* Under heavy backpressure, the final release is never discarded. */
   for(int i=0; i<100; i++) press(255, 7, !(i%2));
   drain(); assert(received[notifications-1][2] == 0);
-  press(0, 41, true); drain(); /* Split disconnect uses the same release path. */
-  press(0, 41, false); drain(); assert(received[notifications-1][7] == 0);
+  press(0, 45, true); drain(); /* Split disconnect uses the same release path. */
+  press(0, 45, false); drain(); assert(received[notifications-1][7] == 0);
   send_error=-ENOMEM; press(255, 3, true); drain(); assert(pending);
   press(255, 3, false); send_error=0; drain(); assert(received[notifications-1][2] == 0);
-  subscribe(false); press(0, 41, true); press(255, 3, true);
-  read_state(value); assert(value[2] == 8 && value[7] == 2);
-  subscribe(true); drain(); assert(received[notifications-1][2] == 8 && received[notifications-1][7] == 2);
-  subscribe(false); press(0, 41, false); press(255, 3, false); subscribe(true); drain();
+  subscribe(false); press(0, 45, true); press(255, 3, true);
+  read_state(value); assert(value[2] == 8 && value[7] == 32);
+  subscribe(true); drain(); assert(received[notifications-1][2] == 8 && received[notifications-1][7] == 32);
+  subscribe(false); press(0, 45, false); press(255, 3, false); subscribe(true); drain();
   assert(received[notifications-1][2] == 0 && received[notifications-1][7] == 0);
   assert(processed > 100);
   puts("Native C: pre-consumer link hook, both halves, multi-key, short taps, overflow, retry and resubscribe passed.");

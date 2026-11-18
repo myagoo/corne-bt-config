@@ -43,7 +43,7 @@ when upgrading KeyBeacon.
 
 ZMK's transformed `position` is the zero-based index of a binding in each layer,
 not a HID usage or an untransformed row/column. The normal Corne transform has
-42 positions; the layout JSON uses the same order. See [the 42-key configuration](corne-42.md). ZMK central forwards events
+46 positions; the layout JSON uses the same order. ZMK central forwards events
 from the right half in this same namespace. Its split disconnect handler emits
 releases for that half's held positions through the same path.
 
@@ -64,9 +64,9 @@ Every value is a complete snapshot:
 | 1 | Number of physical positions, `1..128` |
 | 2 onward | Bitmap, `ceil(count / 8)` bytes; position `p` is bit `p % 8` of byte `2 + p / 8` |
 
-Unused high bits of the last byte are zero. For this 42-key Corne the packet is
-8 bytes. `01 2a 01 00 00 00 00 02` means positions **0 and 41** held;
-`01 2a 00 00 00 00 00 00` means all released. The maximum 18-byte packet fits
+Unused high bits of the last byte are zero. For this 46-key Corne the packet is
+8 bytes. `01 2e 01 00 00 00 00 20` means positions **0 and 45** held;
+`01 2e 00 00 00 00 00 00` means all released. The maximum 18-byte packet fits
 the default ATT notification payload without MTU negotiation.
 
 The bitmap is independent of the active layer, key behaviour and output endpoint.

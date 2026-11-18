@@ -1,4 +1,4 @@
-> Personal configuration: [42-key Corne, KeyBeacon and Corny setup](docs/corne-42.md).
+> Personal configuration: [Corne layout, KeyBeacon and Corny setup](docs/corne-layout.md).
 
 # Keebart ZMK Firmware
 
